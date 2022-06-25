@@ -197,7 +197,7 @@ kind: Service
 metadata:
   name: deploytwoservice
   namespace: myspace
-    labels:
+  labels:
     prometheus-enabled: "true"
 spec:
   ports:
