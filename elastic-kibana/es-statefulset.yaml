@@ -72,11 +72,6 @@ spec:
         kubernetes.io/cluster-service: "true"
     spec:
       serviceAccountName: elasticsearch-logging
-      tolerations:
-      - key: "type"
-        operator: "Equal"
-        value: "specialnode"
-        effect: "NoSchedule"
       containers:
       - image: gcr.io/google-containers/elasticsearch:v5.5.1-1
         name: elasticsearch-logging
@@ -114,7 +109,12 @@ spec:
         name: elasticsearch-logging-init
         securityContext:
           privileged: true
-      volumes:
-      - name: es-storage
-        persistentVolumeClaim:
-         claimName: azure-managed-disk
+  volumeClaimTemplates:
+  - metadata:
+      name: es-storage
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: standard
+      resources:
+        requests:
+          storage: 8Gi
