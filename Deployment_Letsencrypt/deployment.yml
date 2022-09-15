@@ -1,7 +1,7 @@
 #Execute below commands first and then execute yaml
-#1. kubectl label node aks-agentpool-25241858-vmss000006 app=deploy1
-#2. kubectl taint nodes aks-agentpool-25241858-vmss000006 type=specialnode:NoSchedule
-#3. kubectl create configmap deploy1-volume --from-file=deploy1volume.conf=/home/narasimha/narasimha_practise/deploy1volume.conf -n myspace
+#1. kubectl label node i-07b10e9a26bd3852b app=deploy1
+#2. kubectl taint nodes i-07b10e9a26bd3852b type=specialnode:NoSchedule
+#3. kubectl create configmap deploy1-volume --from-file=deploy1volume.conf=/home/ec2-user/kubernetes/Deployment_Letsencrypt/deploy1volume.conf -n myspace
 apiVersion: apps/v1
 kind: Deployment
 metadata:
