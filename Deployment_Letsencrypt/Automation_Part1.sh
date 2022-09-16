@@ -8,6 +8,7 @@ kubectl taint nodes $NODENAME type=specialnode:NoSchedule
 kubectl create configmap deploy1-volume --from-file=deploy1volume.conf=/home/ec2-user/kubernetes/Deployment_Letsencrypt/deploy1volume.conf -n myspace
 kubectl apply -f deployment.yml
 kubectl apply -f ingress.yml
+kubectl apply -f secret.yml
 sleep 300
 LoadBalancer_Details=$(kubectl get svc -n ingress-nginx | grep -w "LoadBalancer" | awk '{print $4;}')
 LoadBalancer_IP=$(nslookup $LoadBalancer_Details| sed -n 6p | awk '{print $2;}')
