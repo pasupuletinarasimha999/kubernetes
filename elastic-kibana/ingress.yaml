@@ -24,7 +24,7 @@ spec:
    - host: sample.narasimhakubernetes.xyz
      http:
       paths:
-      - path: /
+      - path: /kibana
         pathType: Prefix
         backend:
           service:
