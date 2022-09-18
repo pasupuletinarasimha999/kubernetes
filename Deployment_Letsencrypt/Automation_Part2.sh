@@ -9,6 +9,7 @@ kubectl apply -f cert.yaml
 echo Please use URL https://dashboard.narasimhakubernetes.xyz/ to access the Kubernetes dashboard
 cd ..
 cd elastic-kibana
+for i in 'kubectl get node | cut -d '' -f 1 |grep internal' ; do kubectl label nodes ${i} beta.kubernetes.io/fluentd-ds-ready=true ; done
 kubectl apply -f storage.yml
 kubectl apply -f kibana-service.yaml
 kubectl apply -f kibana-deployment.yaml
